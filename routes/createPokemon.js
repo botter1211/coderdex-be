@@ -10,14 +10,14 @@ const createPokemon = async () => {
       return {
         id: index + 1,
         name: e.Name,
-        types: Array(e.Type1, e.Type2),
+        types: Array(e.Type1.toLowerCase(), e.Type2.toLowerCase()),
         url: `http://localhost:8000/images/${e.Name}.png`,
       };
     } else {
       return {
         id: index + 1,
         name: e.Name,
-        types: Array(e.Type1),
+        types: Array(e.Type1.toLowerCase()),
         url: `http://localhost:8000/images/${e.Name}.png`,
       };
     }
