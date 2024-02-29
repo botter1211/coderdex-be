@@ -88,7 +88,12 @@ router.post("/", (req, res, next) => {
     db = JSON.parse(db);
     const { data } = db;
 
-    const { id, name, type1, type2, url } = req.body;
+    const {
+      id,
+      name,
+      types: [type1, type2],
+      url,
+    } = req.body;
     if (!name || !type1 || !url || !id) {
       const exception = new Error(`Missing body info`);
       exception.statusCode = 401;
@@ -117,18 +122,15 @@ router.post("/", (req, res, next) => {
     }
 
     const newPokemon = {
-      id,
+      id: parseInt(id),
       name,
       types: type2 ? [type1, type2] : [type1],
       url,
     };
 
     data.push(newPokemon);
-
     db.data = data;
-
     db = JSON.stringify(db);
-
     fs.writeFileSync("pokemons.json", db);
 
     //post send response
