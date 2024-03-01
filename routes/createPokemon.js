@@ -11,14 +11,14 @@ const createPokemon = async () => {
         id: index + 1,
         name: e.Name,
         types: Array(e.Type1.toLowerCase(), e.Type2.toLowerCase()),
-        url: `http://localhost:8000/images/${e.Name}.png`,
+        url: `https://coderdex-be-iyjv.onrender.com/${e.Name}.png`,
       };
     } else {
       return {
         id: index + 1,
         name: e.Name,
         types: Array(e.Type1.toLowerCase()),
-        url: `http://localhost:8000/images/${e.Name}.png`,
+        url: `https://coderdex-be-iyjv.onrender.com/${e.Name}.png`,
       };
     }
   });
